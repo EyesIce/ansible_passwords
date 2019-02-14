@@ -20,17 +20,14 @@ With test.yml like following:
   hosts: all
   remote_user: root
   tasks:
-          - name: get date from server
-            command: date
-            register: out
-
-          - name: get uptime from server
-            command: uptime
-            register: res
-
-          - debug: var=out.stdout_lines
-
-          - debug: var=res.stdout_lines
+  - name: get date from server
+    command: date
+    register: out
+  - name: get uptime from server
+    command: uptime
+    register: res
+  - debug: var=out.stdout_lines
+  - debug: var=res.stdout_lines
 
 You need to set to skippy the variable stdot_callback within /etc/ansible/ansible.cfg. In this way you obtain an ouput of each executed command like this:
 
@@ -80,14 +77,14 @@ It's necessary setting stdout_callback variable to minimal whitin /etc/ansible/a
   hosts: all
   remote_user: root
   tasks:
-          - name: get date from server
-            command: date
-            #register: out
-
-          - name: get uptime from server
-            command: uptime
-            #register: res
-
-            #- debug: var=out.stdout_lines
-
-            #- debug: var=res.stdout_lines
+  - name: get date from server
+    command: date
+    #register: out
+  
+  - name: get uptime from server
+    command: uptime
+    #register: res
+    
+  #- debug: var=out.stdout_lines
+  
+  #- debug: var=res.stdout_lines
