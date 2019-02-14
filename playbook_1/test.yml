@@ -1,0 +1,16 @@
+---
+- name: test script
+  hosts: all
+  remote_user: root
+  tasks:
+          - name: cose
+            command: date
+            register: out
+
+          - name: esegui cose
+            command: uptime
+            register: res
+
+          - debug: var=out.stdout_lines
+
+          - debug: var=res.stdout_lines
